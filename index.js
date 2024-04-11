@@ -12,6 +12,10 @@ app.get('/users', (req, res) => {
     })
 })
 
+app.use((req, res) => {
+    res.status(404).send('endpoint not found')
+})
+
 app.listen(port, () => {
     console.log(`Server listening at http://localhost:${port}`);
 });
