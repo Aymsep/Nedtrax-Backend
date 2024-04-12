@@ -1,34 +1,13 @@
-const express = require('express');
-const app = express();
-const port = process.env.PORT || 8080;
-const Sequelize = require('sequelize');
-require('dotenv').config()
+const chalk = require('chalk')
+const {em,sequelize} = require('./libs/DBconnection')
+const redis = require('./libs/REDISconnection')
 
-
-const sequelize = new Sequelize(process.env.DEV_DB_URL)
-
-sequelize.authenticate()
-.then(()=>{
-    console.log('authenticated successfully')
-})
-.catch(err=>{
-    console.log('error connecting',err)
+em.on('connected',()=>{
+    require('./libs/APIconnection')
 })
 
-app.get('/', (req, res) => {
-    res.send('Hello World! from ayman www');
-});
 
-app.get('/users', (req, res) => {
-    res.json({
-        user:'ayman'
-    })
+
+redis.em.on('ready', ()=>{
+    console.log(chalk.green.italic('[REDIS] Redis connected successfully'))
 })
-
-app.use((req, res) => {
-    res.status(404).send('endpoint not found')
-})
-
-app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
-});

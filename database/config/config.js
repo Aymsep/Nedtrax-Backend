@@ -5,6 +5,12 @@ module.exports = {
         url: process.env.DEV_DB_URL,
         dialect: 'postgres',
     },
+    DOCKERDEV: {
+        database:process.env.POSTGRES_DB,
+        username:process.env.POSTGRES_USER,
+        password:process.env.POSTGRES_PASSWORD,
+        dialect: 'postgres',
+    },
     PRODUCTION: {
         url: process.env.PROD_DB_URL,
         dialect: 'postgres',
