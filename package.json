@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -L index.js"
+    "dev": "npm run prestart && nodemon index.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "populate": "npx sequelize-cli db:seed:all",
+    "prestart":"npm run migrate && npm run populate"
   },
   "repository": {
     "type": "git",
@@ -21,8 +24,13 @@
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "nodemon": "^3.1.0",
     "pg": "^8.11.5",
     "sequelize": "^6.37.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "sequelize-cli": "^6.6.2"
   }
 }
