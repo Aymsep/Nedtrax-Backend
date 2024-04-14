@@ -9,12 +9,15 @@ const env = process.env.NODE_ENV || 'DEVELOPMENT'
 const config = envConfigs[env]
 const db = {}
 
+console.log('env',env)
+
 let sequelize
 
 if (config.url) {
     sequelize = new Sequelize(config.url, {
       timestamps: true,
-      logging:false
+      logging:false,
+      
 
     })
 } else {

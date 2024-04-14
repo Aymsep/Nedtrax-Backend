@@ -1,0 +1,21 @@
+module.exports = {
+    User:{
+        Allowed_Fields:[
+            "firstName",
+            "lastName",
+            "email",
+            "password",
+            "avatar",
+        ],
+        Allowed_Login_Fields:[
+            "email",
+            "password"
+        ],
+        Permissions:[
+            'edit',
+            'view',
+            'delete',
+            'create',
+        ]
+    },
+}

@@ -8,6 +8,8 @@ em.on('connected',()=>{
 
 
 
+
+
 redis.em.on('ready', ()=>{
     console.log(chalk.green.italic('[REDIS] Redis connected successfully'))
 })
