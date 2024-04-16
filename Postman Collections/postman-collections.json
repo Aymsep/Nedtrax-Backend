@@ -15,8 +15,9 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"url": "{{baseUrl}}/users/create"
 					},
 					"response": []
 				}
@@ -24,10 +25,34 @@
 			"id": "c2011cb6-670a-4bd8-bbe8-dae8417e9c0d"
 		}
 	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "a1829a68-58cc-4f93-990b-3faf85e12bc7",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "602f7c08-04fb-4990-9542-0217e3d16386",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:3000/"
+			"value": "http://localhost:3000/api"
 		}
 	]
 }
