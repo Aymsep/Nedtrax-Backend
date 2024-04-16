@@ -9,7 +9,7 @@
 			"name": "User",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Create User",
 					"id": "9152539b-81d6-43d6-a635-efe81a4ea13d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
