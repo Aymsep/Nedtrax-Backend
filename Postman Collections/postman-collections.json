@@ -6,17 +6,28 @@
 	},
 	"item": [
 		{
-			"name": "New Request",
-			"id": "2547cb6c-e571-4ea1-94bb-1751ed07bd58",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": "http://localhost:3000/"
-			},
-			"response": []
+			"name": "User",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "9152539b-81d6-43d6-a635-efe81a4ea13d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "c2011cb6-670a-4bd8-bbe8-dae8417e9c0d"
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000/"
 		}
 	]
 }
