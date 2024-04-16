@@ -9,6 +9,8 @@ const morgan = require('morgan-body');
 const rateLimit = require('express-rate-limit');
 const cors = require('cors');
 const winston = require('winston');
+const xss = require('xss-clean');
+
 
 // HTTPS options for secure connection
 // const httpsOptions = {
@@ -55,11 +57,18 @@ app.use(express.urlencoded({ extended: true }));
 // Morgan for HTTP request logging
 morgan(app);
 
+
+// Apply xss-clean middleware
+app.use(xss());
+
+
 // Setup your routes here
 
-app.use('/',(req,res)=>{
-    res.json('worked')
-})
+const userRouter = require('../Routes/user.Routes')
+
+
+
+app.use('/api', userRouter);
 
 
 // 404 Not Found Middleware

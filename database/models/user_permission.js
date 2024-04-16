@@ -14,10 +14,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID
     },
     entityUuid: {
-      type: DataTypes.UUID
+      type: DataTypes.UUID,
+      allowNull:true
     },
     permissions: {
       type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: true
     }
   },{
     freezeTableName: true,

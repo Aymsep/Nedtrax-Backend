@@ -27,10 +27,10 @@ module.exports = (sequelize, DataTypes) => {
     },
   },{
     freezeTableName: true,
-    tableName: 'User',
-
+    tableName: 'User'
   }
   )
+  //Association
   User.associate = (models) =>{
     User.hasOne(models.User_role, {
       foreignKey: 'userUuid',
@@ -40,8 +40,15 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userUuid',
       as: 'permissions'
     });
-
-   
   }
+
+  //Hooks
+
+ 
+
+
+
+
+
   return User;
 };
