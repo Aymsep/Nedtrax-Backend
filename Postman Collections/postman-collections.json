@@ -41,7 +41,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"widfd.el@efxdampdle.fcom\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+							"raw": "{\r\n  \"email\": \"widad_talhaoui@ddd.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -60,7 +60,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "a1829a68-58cc-4f93-990b-3faf85e12bc7",
+				"id": "e665b30a-3c48-4933-927a-741028eecbcf",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -71,7 +71,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "602f7c08-04fb-4990-9542-0217e3d16386",
+				"id": "09485f2a-bfe2-4765-84f6-d8e38d17b86d",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -84,6 +84,11 @@
 		{
 			"key": "baseUrl",
 			"value": "http://localhost:3000/api"
+		},
+		{
+			"key": "widadToken",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4NDUyYjhhLWY4MjgtNDVhZi05NThmLWNlZmZiNGIyYWY0OSIsImZpcnN0TmFtZSI6IndpZGFhZCIsImxhc3ROYW1lIjoidGFsaGFvdWkiLCJlbWFpbCI6IndpZGFkX3RhbGhhb3VpQGRkZC5jb20iLCJpYXQiOjE3MTMyMzA3ODYsImV4cCI6MTcxMzIzNDM4Nn0.tvkqBqtCcU-aXavb6lPRYTRQzqq2dh4ZyttsyWwl52E",
+			"type": "string"
 		}
 	]
 }
