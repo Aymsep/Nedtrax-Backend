@@ -63,6 +63,34 @@
 						"url": "{{baseUrl}}/users/login"
 					},
 					"response": []
+				},
+				{
+					"name": "Logout User",
+					"id": "a0747c27-b8f3-4c43-a0fa-3e47845841f9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{widadToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"widad_talhaoui@ddd.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/users/logout"
+					},
+					"response": []
 				}
 			],
 			"id": "c2011cb6-670a-4bd8-bbe8-dae8417e9c0d"
@@ -72,7 +100,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "e665b30a-3c48-4933-927a-741028eecbcf",
+				"id": "65125137-03da-4aec-9170-72c3b252ff9f",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -83,7 +111,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "09485f2a-bfe2-4765-84f6-d8e38d17b86d",
+				"id": "47997742-4ff6-4eb2-8443-a02a37c4a549",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -99,7 +127,7 @@
 		},
 		{
 			"key": "widadToken",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4NDUyYjhhLWY4MjgtNDVhZi05NThmLWNlZmZiNGIyYWY0OSIsImZpcnN0TmFtZSI6IndpZGFhZCIsImxhc3ROYW1lIjoidGFsaGFvdWkiLCJlbWFpbCI6IndpZGFkX3RhbGhhb3VpQGRkZC5jb20iLCJpYXQiOjE3MTMyMzA3ODYsImV4cCI6MTcxMzIzNDM4Nn0.tvkqBqtCcU-aXavb6lPRYTRQzqq2dh4ZyttsyWwl52E",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Ijc4NDUyYjhhLWY4MjgtNDVhZi05NThmLWNlZmZiNGIyYWY0OSIsImZpcnN0TmFtZSI6IndpZGFhZCIsImxhc3ROYW1lIjoidGFsaGFvdWkiLCJlbWFpbCI6IndpZGFkX3RhbGhhb3VpQGRkZC5jb20iLCJpYXQiOjE3MTMzMTMyNDcsImV4cCI6MTcxMzMxNjg0N30.rE5ynuVQU53MSyrDjnNsO44LwtysGp_acf51bAGBQJk",
 			"type": "string"
 		}
 	]
