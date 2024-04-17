@@ -37,6 +37,34 @@
 					"response": []
 				},
 				{
+					"name": "Get User By Id",
+					"id": "d768fdb9-35af-4c29-a740-e4b092c2ae94",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{widadToken}}"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"test\",\r\n  \"lastName\": \"t22\",\r\n  \"email\": \"aa@2020.com\",\r\n  \"password\": \"password123\",\r\n  \"enable\": false,\r\n  \"role\": \"manager\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/users/create"
+					},
+					"response": []
+				},
+				{
 					"name": "Login User",
 					"id": "3f625975-504a-4795-b32a-a43bf5e53884",
 					"protocolProfileBehavior": {
