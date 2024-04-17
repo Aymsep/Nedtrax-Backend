@@ -46,7 +46,7 @@
 						"auth": {
 							"type": "bearer",
 							"bearer": {
-								"token": "{{aymanToken}}"
+								"token": "{{widadToken}}"
 							}
 						},
 						"method": "GET",
@@ -143,7 +143,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "2aae4c52-16a7-4360-9a72-1d94156bca67",
+				"id": "d8adb44d-0f87-44f9-aeba-b0c3b13ff448",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -154,7 +154,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "223f309a-a016-4fa7-a94e-09fafcdc4fa4",
+				"id": "94fc84da-d4fc-4dd7-b699-89dd9ccfad20",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -175,7 +175,7 @@
 		},
 		{
 			"key": "aymanToken",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM1MjU5Y2M0LTBlYTItNGQxMi04MzUwLTBkNmZiNjI4OTBiNCIsImZpcnN0TmFtZSI6ImF5bWFuIiwibGFzdE5hbWUiOiJlbCIsImVtYWlsIjoiYXltYW4uZWxAZXhhbXBsZS5jb20iLCJpYXQiOjE3MTMzMTc3NjUsImV4cCI6MTcxMzMyMTM2NX0.0_Nq2Xg3jB4XR2De7eoSGTpMT6xlKpv7Cg1_EMcWOLs",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjM1MjU5Y2M0LTBlYTItNGQxMi04MzUwLTBkNmZiNjI4OTBiNCIsImZpcnN0TmFtZSI6ImF5bWFuIiwibGFzdE5hbWUiOiJlbCIsImVtYWlsIjoiYXltYW4uZWxAZXhhbXBsZS5jb20iLCJpYXQiOjE3MTMzMTkyODMsImV4cCI6MTcxMzMyMjg4M30.csi3K4NL2ZT0z-jSZ3F1AuguemHE4kxW88KPzokZarg",
 			"type": "string"
 		}
 	]
