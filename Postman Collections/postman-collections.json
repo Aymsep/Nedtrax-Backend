@@ -108,6 +108,50 @@
 					"response": []
 				},
 				{
+					"name": "Get User Permissions",
+					"id": "c74b5ec2-7aaa-478d-8219-ac991b67312a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjRhYjdkMTBlLTYxY2YtNDQzYS04ZGEyLTkxZThjZGY0OTI1ZiIsImZpcnN0TmFtZSI6IkphbmUiLCJsYXN0TmFtZSI6IlNtaXRoIiwiZW1haWwiOiJqYW5lLnNtaXRoQGV4YW1wbGUuY29tIiwiaWF0IjoxNzEzMzU1NjIzLCJleHAiOjE3MTMzNTkyMjN9.eI4dyXPxidrCQCG49wn9pwqk70gYGCc90apCgZGZR4M"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"firstName\": \"test\",\r\n  \"lastName\": \"t22\",\r\n  \"email\": \"aa@2020.com\",\r\n  \"password\": \"password123\",\r\n  \"enable\": false,\r\n  \"role\": \"manager\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/:id/permissions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								":id",
+								"permissions"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Login User",
 					"id": "3f625975-504a-4795-b32a-a43bf5e53884",
 					"protocolProfileBehavior": {
