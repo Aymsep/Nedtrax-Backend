@@ -7,6 +7,15 @@ em.on('connected',()=>{
 })
 
 
+// redis.redisClientAux.flushall().then(() => {
+//     console.log('Cache cleared successfully.');
+//   }).catch((error) => {
+//     console.error('Error clearing cache:', error);
+//   }).finally(() => {
+//     // Close the Redis connection
+//     redis.redisClientAux.quit();
+//   });
+
 
 
 

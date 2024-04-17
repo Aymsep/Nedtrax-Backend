@@ -3,16 +3,18 @@ const router = express.Router();
 const userController = require('../Controllers//user.Controllers');
 const { isAuthenticate } = require('../Middlewares/isAuth.middlwares');
 const checkPermissions = require('../Middlewares/checkPermissions.middlwares');
+const { checkBlacklist } = require('../Middlewares/tokenBlack.middlwares');
+const { cacheData } = require('../libs/REDISconnection');
 
 // CRUD operations for User
-router.post('/users/create', isAuthenticate,checkPermissions('Users','edit'),userController.createUser);      // Create a new user
-router.get('/users/:id', userController.getUser);      // Get a specific user by ID
-router.put('/users/:id', userController.updateUser);   // Update a specific user by ID
-router.delete('/users/:id', userController.deleteUser);// Delete a specific user by ID
+router.post('/users/create', checkBlacklist,isAuthenticate,checkPermissions('Users','create'),userController.createUser);      // Create a new user
+router.get('/users/:id', checkBlacklist,isAuthenticate,checkPermissions('Customers','view'),cacheData('cached_user'),userController.getUser);      // Get a specific user by ID
+router.put('/users/:id',checkBlacklist,isAuthenticate,checkPermissions('Users','edit'), userController.updateUser);   // Update a specific user by ID
+router.delete('/users/:id',checkBlacklist,isAuthenticate,checkPermissions('Users','delete'), userController.deleteUser);// Delete a specific user by ID
 
 // Authentication routes
 router.post('/users/login', userController.loginUser);       // User login
-router.post('/users/logout', userController.logoutUser);     // User logout
+router.post('/users/logout',isAuthenticate,checkBlacklist, userController.logoutUser);     // User logout
 
 // Password management
 router.post('/users/:id/password', userController.changePassword); // Change password for a user

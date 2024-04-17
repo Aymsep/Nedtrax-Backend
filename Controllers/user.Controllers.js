@@ -1,9 +1,12 @@
-const { getUserByEmail, addUserToDb } = require("../database/methods/user.Methods");
+const { getUserByEmail, addUserToDb, getUserById } = require("../database/methods/user.Methods");
 const constants = require("../Config/constants");
 const { responseHandler } = require("../helpers/response");
 const _ = require("lodash");
 const { HashPassword, VerifyPassword } = require("../helpers/hashing");
-const { sign } = require("../helpers/JWT");
+const { sign, verify } = require("../helpers/JWT");
+
+
+
 exports.createUser = async (req, res) => {
     const {firstName, lastName,email, password,enable,role} = _.cloneDeep(req.body)
     try{
@@ -15,11 +18,19 @@ exports.createUser = async (req, res) => {
     }catch(err){
       responseHandler(res,constants.REGISTRATION_FAILED,err.message)
     }
-  };
+};
   
-  exports.getUser = async (req, res) => {
+exports.getUser = async (req, res) => {
     // Implementation to fetch a user by ID
-  };
+    const {id} = req.params
+    try{
+      const user = await getUserById(id)
+      if(!user) return responseHandler(res,constants.USER_NOT_FOUND)
+      return responseHandler(res,constants.ACCEPTED,user)
+    }catch(err){
+      return responseHandler(res,constants.INTERNAL_SERVER_ERROR,err.message)
+    }
+};
   
   exports.updateUser = async (req, res) => {
     // Implementation to update user details
@@ -63,7 +74,14 @@ exports.createUser = async (req, res) => {
   };
   
   exports.logoutUser = async (req, res) => {
-    // Implementation for user logout
+    const token = req.headers.authorization.split(' ')[1]; // Assuming Bearer token format
+    const ttl = (verify(token).exp - Math.floor(Date.now() / 1000));
+    redisClientAux.set(token, true, 'EX', ttl, (err, reply) => {
+        if (err) {
+            return responseHandler(res,constants.LOGIN_FAILED,err.message)
+        }
+        return responseHandler(res,constants.LOGOUT_SUCCESS)
+    });
   };
   
   exports.changePassword = async (req, res) => {

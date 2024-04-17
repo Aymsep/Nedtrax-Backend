@@ -50,6 +50,9 @@ exports.ACCOUNT_ALREADY_VERIFIED = { code: 400, message: 'This account is alread
 exports.ACCOUNT_VERIFICATION_SUCCESS = { code: 200, message: 'Account verified successfully.' };
 exports.ACCOUNT_VERIFICATION_FAILED = { code: 500, message: 'Account verification failed.' };
 
+//Token
+exports.TOKEN_NOT_VALID = { code: 500, message: 'Error checking token validity'}
+exports.TOKEN_REVOKED = { code: 401, message: 'Token has been revoked'}
 
 
 // // Authentication and user management

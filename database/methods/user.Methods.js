@@ -89,3 +89,17 @@ exports.getUserByPermissions = async (id,entityName) => {
         throw new Error(err)
     }
 }
+
+
+exports.getUserById = async (id) => {
+    try{
+        const user = await models.User.findOne({
+            where:{
+                uuid:id
+            }
+        })
+        return user
+    } catch(err){
+        throw new Error(err)
+    }
+}

@@ -17,6 +17,7 @@ const checkPermissions = (entityName,action) => async (req, res, next) => {
         const hasPermission = user.permissions.some(permission => 
             permission.entity.name === entityName && permission.permissions.includes(action)
         );
+        if(!hasPermission) return responseHandler(res,constants.INSUFFICIENT_PERMISSIONS) 
             
 
         next();

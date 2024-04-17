@@ -49,44 +49,34 @@ const middlewareCacheClean = () => {
     }
 }
 
-const middlewareCacheData = (duration, useUserUid = false) => {
-    return (req, res, next) => {
-        //console.log("middlewareCacheData");
-
-        let key = useUserUid ? '_cached_' + req.originalUrl + '_' + res.locals.firebase_uid : '_cached_' + req.originalUrl
-        //console.log(key);
-        
-        redisClientAux.get(key).then((result) => {
-            //console.log(result);
-            if (result) {
-                let resultParsed = JSON.parse(result)
-                //console.log('[REDIS] Found key ' + key);
-                res.header('Content-Type','application/json')
-                res.header('X-Is-Cached','Yes')
-                res.send(resultParsed)
-                return 
-            } else {
-                let end = res.end
-                res.end = (chunk, encoding) => {
-                    //console.log('[REDIS] Res ' + res.statusCode);
-                    
-                    if (res.statusCode < 300) {
-                        //console.log('[REDIS] Set key ' + key);
-                        redisClientAux.set(key, chunk, duration)
-                    }
-                    res.end = end
-                    res.end(chunk, encoding)
-                    return
-                }
-                next()
+const cacheData = (keyPrefix,duration=1800) => {
+    return async (req, res, next) => {
+        const key = `${req.user.id}_${keyPrefix}_${req.params.id}`; // Cache key based on ID
+        try {
+            const cachedResult = await redisClientAux.get(key);
+            if (cachedResult) {
+                let resultParsed = JSON.parse(cachedResult)
+                res.header('Content-Type', 'application/json');
+                res.header('X-Is-Cached', 'Yes');
+                res.status(200).json(resultParsed);
+                return;
             }
-            
-        }, () => {
-            //console.log(err);
-            next()
-        })
-    }
-}
+        } catch (err) {
+            console.error(`[REDIS] Error retrieving key: ${key}`, err);
+            // Continue to generate response if cache fails
+        }
+        const originalSend = res.send.bind(res);
+        res.send = (body) => {
+                console.log(`[REDIS] Setting key: ${key}`);
+                // Ensure the body is in string format to avoid issues in caching
+                redisClientAux.set(key, body, 'EX', duration).catch(err => {
+                    console.error(`[REDIS] Error setting key: ${key}`, err);
+                });
+            originalSend(body);
+        };
+        next();
+    };
+};
 
 const deleteCacheData = () => {
     redisClientAux.flush().then(() => {
@@ -97,7 +87,7 @@ const deleteCacheData = () => {
 module.exports = {
     redisClient: redisClientAux.redisClient,
     redisClientAux: redisClientAux,
-    middlewareCacheData: middlewareCacheData,
+    cacheData: cacheData,
     middlewareCacheClean: middlewareCacheClean,
     deleteCacheData: deleteCacheData,
     em: redisClientAux
